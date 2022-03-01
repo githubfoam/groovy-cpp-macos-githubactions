@@ -1,0 +1,76 @@
+
+name: "testng test framework building C++ Applications CI macos workflow"
+
+on:
+  push:
+    branches: [ test ]
+  pull_request:
+    branches: [ test ]
+  schedule:
+    - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month
+
+jobs:
+
+  testng-groovy-cpp-gradle-macos-latest:
+    name: "Building CPP Applications Sample Groovy"
+    runs-on: macos-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "Building Java Applications Sample Groovy"
+      run: |
+          mkdir demo && cd demo
+          # gradle init --project-name demo --type cpp-application --dsl groovy
+          # gradle init --project-name demo --type cpp-application --dsl groovy --test-framework junit-jupiter
+          # gradle init --project-name demo --type cpp-application --dsl groovy --test-framework spock
+          gradle init --project-name demo --type cpp-application --dsl groovy --test-framework testng
+          echo "==================Run the application=================================================================="   
+          ./gradlew run
+          echo "==================Bundle the application=================================================================="              
+          ./gradlew build           
+          echo "==================Publish a Build Scan=================================================================="              
+          ./gradlew build --scan
+          cat app/build.gradle
+
+  testng-groovy-cpp-gradle-macos-11:
+    name: "Building CPP Applications Sample Groovy"
+    runs-on: macos-11
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "Building Java Applications Sample Groovy"
+      run: |
+          mkdir demo && cd demo
+          # gradle init --project-name demo --type cpp-application --dsl groovy
+          # gradle init --project-name demo --type cpp-application --dsl groovy --test-framework junit-jupiter
+          # gradle init --project-name demo --type cpp-application --dsl groovy --test-framework spock
+          gradle init --project-name demo --type cpp-application --dsl groovy --test-framework testng
+          echo "==================Run the application=================================================================="   
+          ./gradlew run
+          echo "==================Bundle the application=================================================================="              
+          ./gradlew build           
+          echo "==================Publish a Build Scan=================================================================="              
+          ./gradlew build --scan
+          cat app/build.gradle
+
+  testng-groovy-cpp-gradle-macos-10.15:
+    name: "Building CPP Applications Sample Groovy"
+    runs-on: macos-10.15
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "Building Java Applications Sample Groovy"
+      run: |
+          mkdir demo && cd demo
+          # gradle init --project-name demo --type cpp-application --dsl groovy
+          # gradle init --project-name demo --type cpp-application --dsl groovy --test-framework junit-jupiter
+          # gradle init --project-name demo --type cpp-application --dsl groovy --test-framework spock
+          gradle init --project-name demo --type cpp-application --dsl groovy --test-framework testng
+          echo "==================Run the application=================================================================="   
+          ./gradlew run
+          echo "==================Bundle the application=================================================================="              
+          ./gradlew build           
+          echo "==================Publish a Build Scan=================================================================="              
+          ./gradlew build --scan
+          cat app/build.gradle
+         
