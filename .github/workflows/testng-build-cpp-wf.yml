@@ -53,7 +53,7 @@ jobs:
           ./gradlew build --scan
           cat app/build.gradle
 
-  testng-groovy-cpp-gradle-macos-10.15:
+  testng-groovy-cpp-gradle-macos-1015:
     name: "Building CPP Applications Sample Groovy"
     runs-on: macos-10.15
     steps:
